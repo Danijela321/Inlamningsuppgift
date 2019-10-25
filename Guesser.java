@@ -24,7 +24,11 @@ public class Guesser{
   
   // Write the constructor below this line.
 
-
+	public Guesser(int low_,int high_)
+	{
+	this.low=low_;
+	this.high=high_;
+	}
   /*
    * Task 2. Complete the start() method, so that
    * in the method body, you call first the
@@ -33,10 +37,11 @@ public class Guesser{
   public void start(){
     // call the rules method here
     // call the doGuesses() method here
+
   }
 
   private void rules(){
-    System.out.println("Think of a number between " +
+System.out.println("Thinking of a number between " +
                        low + " and "  + high);
     System.out.println("I'm going to ask a few questions in order " +
                        "to guess the number.");
