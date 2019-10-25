@@ -1,5 +1,5 @@
 import java.io.Console;
-
+import java.util.Scanner;
 /**
  * Assignment 1 - Guessing Game
  * 
@@ -65,7 +65,26 @@ System.out.println("Thinking of a number between " +
     // As long as it is not a valid reply (one of "T" and "F")
     // write an error message, and read a new reply.
     // When you have gotten a valid reply, return it.
-    return reply;
+    reply=new Scanner(System.in).nextLine();	
+    do{
+	if("T".equals(reply))
+	{
+	reply="T";
+	break;
+	}
+	else if("F".equals(reply))
+        { 
+        reply="F";
+        break;
+        }
+	else
+	{
+	System.out.println("Please answer T for true, and F for false.\n");
+	reply=new Scanner(System.in).nextLine();
+	}
+    }while((!"T".equals(reply)) || (!"F".equals(reply)));
+   
+      return reply;
   }
 
   private void doGuesses(){
