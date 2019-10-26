@@ -5,8 +5,12 @@ public class GuessingGame
 {
 	public static void main(String[] args)
 	{
+	//declaration and initialization of variables 
+	int _low=0;
+	int _high=1000;
 	//skapar objekt
-	Guesser guesser = new Guesser(0,1000);
+	//passing the values of variabels to the constructor
+	Guesser guesser = new Guesser(_low,_high);
 	guesser.start();//anropar metoden som ligger i class Guesser
 	}
 }
