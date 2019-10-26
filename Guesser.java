@@ -29,11 +29,22 @@ public class Guesser{
 	this.low=low_;
 	this.high=high_;
 	}
-  /*
-   * Task 2. Complete the start() method, so that
-   * in the method body, you call first the
-   * rules() method, next the doGuesses() method.
-   */
+
+	public String toString()
+	{
+	if(low<=high)
+	return "low: "+low+ " high: "+high+ "\nTest passed!";
+	else
+	return "You chose bigger lower limit then upper.\nTest failed!";
+	}
+	
+
+/*
+  
+   // Task 2. Complete the start() method, so that
+   // in the method body, you call first the
+   // rules() method, next the doGuesses() method.
+   
   public void start(){
     // call the rules method here
     // call the doGuesses() method here
@@ -49,16 +60,16 @@ System.out.println("Thinking of a number between " +
     System.out.println("Please answer T for true, and F for false.\n");
   }
 
-  /*
-   * Task 3. Complete the code for the getReply() method.
-   * In the current version below, it returns null each
-   * call, which is not what this method is supposed to do.
-   * 
-   * Instead, change the method so that it reads a reply
-   * from the player, and if it is "T" or "F", we have
-   * a valid reply. Return the String that you read from
-   * the player.
-   */
+  
+  // * Task 3. Complete the code for the getReply() method.
+   // In the current version below, it returns null each
+   // call, which is not what this method is supposed to do.
+   
+   // Instead, change the method so that it reads a reply
+   // from the player, and if it is "T" or "F", we have
+   // a valid reply. Return the String that you read from
+   // the player.
+  
   private String getReply(){
     String reply = null;
     // Write code here which reads a String from the console.
@@ -120,5 +131,5 @@ System.out.println("Thinking of a number between " +
                        " (took me " + numberOfGuesses +
                        " guesses)");
   }
-
+*/
 }
