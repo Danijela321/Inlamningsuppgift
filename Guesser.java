@@ -39,7 +39,7 @@ public class Guesser{
 	}
 	
 
-/*
+
   
    // Task 2. Complete the start() method, so that
    // in the method body, you call first the
@@ -131,5 +131,5 @@ System.out.println("Thinking of a number between " +
                        " (took me " + numberOfGuesses +
                        " guesses)");
   }
-*/
+
 }
