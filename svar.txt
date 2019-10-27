@@ -1,0 +1,200 @@
+github.com/Danijela321/Inlamningsuppgift
+Jag siktar på VG.
+
+1.När man använder add respektive commit?
+Man använder add när man skickar file till staging area.
+Om man vill skicka filen till the respositor använder man commit.
+
+2.Vad är pull respektive push?
+Commande pull ladar ner nya version av filen som ligger i ett remote repository- origin respository och
+ synkroniserar med mina ändringar(eftersom andra som arbetar på samma projekt kanske gjorde ändringar).
+Commande push laddar upp mina commitade ändringar till detta remote repository.
+
+3.När använder man log respektive status?
+Man använder log när man vill se commit historia i den aktuella branchen.
+Man använder status att se är det något som är ändrat och redo för att vara
+skickat till staging area(add .) eller att vara skicka till det remota,origin respository(commit).
+
+4.Hur kan man formulera sig i sina commit- meddelanden?
+-m"meddelande"
+hela commando: git commit -m"meddelande"
+
+5.-sätt att rulla tillbaka koden till ett tidigare tillstånd.
+
+5.1.git revert
+-vi återgå till senaste commit, dvs att tilbacka HEAD one nivå under.Nu får vi en nya commit som återkommer vår coden 
+git revert HEAD
+T.ex.:
+Om vi raderade en fillen och commit kan vi rulla commit tillbaka:
+git revert the hashcode
+eller
+git revert HEAD
+
+-efter git oppnar text editor att informera oss om ändringar
+
+Vad hände:
+efter commit:
+e7ed377 (HEAD -> master) commit text
+
+efter new commit:
+3e37dc8 (HEAD -> master) add more text
+e7ed377 commit text
+
+efter git revert HEAD
+6ab0730 (HEAD -> master) Revert "add more text"
+3e37dc8 add more text
+e7ed377 commit text
+
+Revert resulterar med en ny commit
+
+5.2. git reset (att rulla tillbaka-commit)
+-det commandot flytter referenser till annat commit.
+
+5.2.1. git reset HEAD
+
+I första steg  alla,HEAD,master,staging area och working area påpekar på samma commit.
+Vi ändra coden och spara. Nu påpekar HEAD,master och staging area till sista commit men working area påpekar till den nya filen .
+Efter add . Nu påpekar HEAD,master till sista commit men stagning och working area påpekar till nya filen som innehåller ändringar.
+När gör vi git reset HEAD file_name. Nu HEAD,master och staging area igen påpekar till senast commit innan ändringar och
+ bara working area påpekar till denna nya fillen som innehåller ändringar.
+Med git checkout filen_name filen är tillbaka i working area.
+
+Vad hände:
+efter commit:
+66734b7 (HEAD -> master) add text
+
+efter new commit:
+8819d0d (HEAD -> master) add more text
+66734b7 add text
+
+efter en ny commit
+56d4415 (HEAD -> master) add even more text
+8819d0d add more text
+66734b7 add text
+
+efter git reset HEAD name_file:
+56d4415 (HEAD -> master) add even more text
+8819d0d add more text
+66734b7 add text
+Det finns inte ändringa av inga commit
+
+5.2.2. git reset --soft HEAD ~1
+I första steg alla,HEAD,master,staging area oc working area påpekar på samma commit
+Vi gjorde ändring, sparade, add . och commit filen.Nu I första steg alla,HEAD,master,staging area och working area
+ påpekar på samma nya filen som innehåller ändringar.
+Nu gör vi git reset --soft HEAD~1. Nu HEAD och master påpekar till senast commit men working area påpekar till den nya filen.
+Efter add . och commit alla HEAD,master,staging area oc working area påpekar på samma ny commit. Vi "har ny fil" som är lika 
+den gamla flen innan ändringar.Gamla gilen med ändringar måste vara raderad och vi måste skriva kommandot för detta.
+
+Vad hände:
+efter commit:
+fb97a14 (HEAD -> master) add text
+
+efter en ny commit
+dc17399 (HEAD -> master) add more text
+fb97a14 add text
+
+efter git reset --soft HEAD~1
+fb97a14 (HEAD -> master) add text
+Det finns inte längre denna sista commit
+
+5.2.3. git reset --hard HEAD~1
+I första steg alla,HEAD,master,staging area oc working area påpekar på samma  commit
+Vi gjorde ändring, sparade, add . och commit filen.Nu alla,HEAD,master,staging area och working area 
+ påpekar på samma nya commit som innehåller ändringar.Efter vi gör git reset --hard HEAD~1
+alla,HEAD,master,staging area oc working area påpekar på samma senast commit innan ändringar. Systemet tar bort nya filen som
+innehåler ändringar. 
+
+Vad hände:
+efter commit:
+788f706 (HEAD -> master) add text
+
+efter en ny commit:
+13c5518 (HEAD -> master) Add mer text
+788f706 add text
+
+efter git reset --hard HEAD~1
+788f706 (HEAD -> master) add text
+Det finns inte längre denna sista commit och 
+jag fick meddelande i terminal:"HEAD is now at 788f706 add text"
+
+Skillande:
+Revert gör en ny commit som återkommer vår coden.
+Reset HEAD:till slut HEAD,master,staging area påpekar till commit  innan ändring, men working area påpekar till commit efter
+	   ändringar.
+Reset --soft: till slut,alla,HEAD,master,staging area oc working area påpekar på samma nyaste  commit(nya filen som är lika som
+		den gamla filen innan ändringar). Systemet tar inte bort automatiskt den filen som innehåller ändringark.
+
+Reset --hard: till slut alla,HEAD,master,staging area oc working area påpekar på samma senast commit innan ändringar. 
+	      Systemet tar bort automatisk den nya filen som innehåller ändringar.
+
+
+
+5.3. att tillbaka gamla version efter vi  compilera och köra  denna nya code version
+Om vi vill går tillbacka till  gamla version använder vi git stash.Detta kommandot ger oss möjlighet att spara  ändring
+i en temporär box och också att gå tillbacka till en ren working area samtidigt.
+
+
+Vad hände när vi kör dessa kommandon(samling):
+1.revert
+efter commit:
+e7ed377 (HEAD -> master) commit text
+
+efter new commit:
+3e37dc8 (HEAD -> master) add more text
+e7ed377 commit text
+
+efter git revert HEAD
+6ab0730 (HEAD -> master) Revert "add more text"
+3e37dc8 add more text
+e7ed377 commit text
+
+Revert resulterar med en ny commit
+
+2. reset
+
+2.1.reset HEAD
+efter commit:
+66734b7 (HEAD -> master) add text
+
+efter new commit:
+8819d0d (HEAD -> master) add more text
+66734b7 add text
+
+efter en ny commit
+56d4415 (HEAD -> master) add even more text
+8819d0d add more text
+66734b7 add text
+
+efter git reset HEAD name_file:
+56d4415 (HEAD -> master) add even more text
+8819d0d add more text
+66734b7 add text
+Det finns inte ändringa av inga commit
+
+2.2. reset soft
+efter commit:
+fb97a14 (HEAD -> master) add text
+
+efter en ny commit
+dc17399 (HEAD -> master) add more text
+fb97a14 add text
+
+efter git reset --soft HEAD~1
+fb97a14 (HEAD -> master) add text
+Det finns inte längre denna sista commit 
+
+2.3. reset hard
+efter commit:
+788f706 (HEAD -> master) add text
+
+efter en ny commit:
+13c5518 (HEAD -> master) Add mer text
+788f706 add text
+
+efter git reset --hard HEAD~1
+788f706 (HEAD -> master) add text
+Det finns inte längre denna sista commit och 
+jag fick meddelande i terminal:"HEAD is now at 788f706 add text"
+
+
