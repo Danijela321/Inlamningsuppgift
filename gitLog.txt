@@ -1,0 +1,13 @@
+0ec6780 (HEAD -> master) svar på frågorna
+5fcd4f6 (origin/master) Task5. The player choose parameters before the game start.Plus: new IllegalArgumentException
+09bad96 declaration and initialization of variables and passing the values 0 and 1000 to the constructor
+84688ef The whole class Guesser is active again.
+de150eb create toString method to be able to test does constructor works. Related to TestGuesser.The rest of program is inactive to be sure that test is correct.
+d2dcd7a I thought that we do not need to make tester, so I did not done it in the Task 1
+b19d42a Task 3. complete getReply() metod. Testing is player replyies correct. big F or big T.If not player is getting error message.
+d9c8db2 add rules and doGuesses metods into start metod
+f7e1d29 skapar objekt i main inom class GuessingGame.java
+6a3f0f2 add konstruktor
+cf5051d skapar objekt i class GuessingGame.java
+e483a7a add Guesser.java
+a39e4f0 add a txt file .gitignore
